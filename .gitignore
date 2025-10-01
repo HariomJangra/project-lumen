@@ -1,0 +1,24 @@
+.DS_Store
+
+# Ignore datasets
+*.npy
+*.csv
+*.jsonl
+*.txt
+
+# Ignore checkpoints
+checkpoints/
+best_model_params.pt
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore Tokenized dataset files
+TokenizedDataSet.npy
+train_split.npy
+val_split.npy
+
+# Ignore custom tokenizer files if you don’t want them
+Lumen-Tokenizer
+# LumenTokenizer.json
