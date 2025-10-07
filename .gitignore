@@ -1,24 +1,35 @@
-.DS_Store
+# Jupyter
+.ipynb_checkpoints/
 
-# Ignore datasets
-*.npy
-*.csv
-*.jsonl
-*.txt
-
-# Ignore checkpoints
-checkpoints/
-best_model_params.pt
-
-# Ignore Python cache
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.python-version
 
-# Ignore Tokenized dataset files
-TokenizedDataSet.npy
-train_split.npy
-val_split.npy
+# Environments
+.venv/
+venv/
 
-# Ignore custom tokenizer files if you don’t want them
-Lumen-Tokenizer
-# LumenTokenizer.json
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Model artifacts and large binaries
+*.pt
+*.pth
+*.bin
+
+# Logs
+*.log
+
+# Project data/artifacts
+Models/
+DataSets/
+PreTraining/Implementation/checkpoints/
+
+#benchmark outputs
+PreTraining/Benchmark/*results.json
