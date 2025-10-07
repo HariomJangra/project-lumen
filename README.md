@@ -107,7 +107,7 @@ ModelConfig(
 
 ### Training Progress
 
-![Training Loss Curve](images/training_loss_curve.png)
+![Training Loss Curve](PreTraining/images/training_loss_curve.png)
 
 *Training vs Validation Loss over time*
 
