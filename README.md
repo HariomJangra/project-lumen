@@ -1,10 +1,13 @@
 # Project Lumen
 
-A clean implementation of a transformer-based language model with pre-training, benchmarking, and inference capabilities.
+A 128M Parameter Language Model Built from Scratch
+
+Project Lumen is a foundational language model created entirely from scratch for learning and research purposes.
+It explores every step of modern LLM development — from data preprocessing and tokenization to architecture design, training, evaluation and so on...
 
 ## 🎯 Overview
 
-This project implements a GPT-style transformer model from scratch using PyTorch, featuring grouped multi-query attention (GQA), SwiGLU activation, and RMSNorm. The model is trained on custom datasets and evaluated on standard NLP benchmarks.
+This project implements a GPT-style transformer model from scratch using PyTorch, featuring grouped multi-query attention (GQA), SwiGLU activation, and RMSNorm. The **128M parameter** model is trained on custom datasets and evaluated on standard NLP benchmarks.
 
 ## 📁 Project Structure
 
@@ -13,8 +16,6 @@ PreTraining/
 ├── Implementation/       # Model training and data preparation
 ├── Benchmark/           # Model evaluation on benchmarks
 ├── Inference/          # Text generation and inference
-├── DataSets/           # Tokenized training data
-└── Models/             # Saved model checkpoints
 ```
 
 ## ✨ Key Features
@@ -104,6 +105,12 @@ ModelConfig(
 - **Sequence Length**: 2048 tokens
 - **Mixed Precision**: Automatic (BF16/FP16/FP32)
 
+### Training Progress
+
+![Training Loss Curve](images/training_loss_curve.png)
+
+*Training vs Validation Loss over time*
+
 ## 📈 Benchmarks
 
 Evaluate your model on standard benchmarks:
@@ -115,6 +122,10 @@ jupyter notebook PreTraining/Benchmark/Benchmark.ipynb
 Supported benchmarks:
 - ARC-Easy & ARC-Challenge
 - HellaSwag
+
+## 🚧 Post-Training
+
+**Coming Soon**: Fine-tuning capabilities for instruction following, chat models, and task-specific adaptations.
 
 ## 🔧 Requirements
 
@@ -146,7 +157,7 @@ Feel free to open issues or submit pull requests for improvements.
 
 ## 📄 License
 
-This project is available for educational and research purposes.
+This project is open source and licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
