@@ -33,3 +33,6 @@ PreTraining/Implementation/checkpoints/
 
 #benchmark outputs
 PreTraining/Benchmark/*results.json
+
+
+modelcard.md

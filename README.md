@@ -118,7 +118,7 @@ pip install torch numpy tqdm tokenizers datasets huggingface_hub matplotlib
 
 ## 📄 License
 
-MIT License - See LICENSE file for details.
+Apache License 2.0 - See LICENSE file for details.
 
 ---
 
