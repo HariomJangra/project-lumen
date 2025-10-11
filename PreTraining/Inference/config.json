@@ -1,0 +1,18 @@
+{
+    "vocab_size": 32000,
+    "hidden_size": 768,
+    "n_heads": 12,
+    "n_kv_heads": 4,
+    "n_kv_groups": 3,
+    "head_dim": 64,
+    "n_layers": 12,
+    "attention_bias": false,
+    "intermediate_size": 3072,
+    "mlp_bias": false,
+    "eps": 1e-5,
+    "dropout": 0.0,
+    "max_position_embeddings": 2048,
+    "pre_norm": true,
+    "tie_weights": true,
+    "max_seq_len": 2048
+}

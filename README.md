@@ -39,93 +39,69 @@ PreTraining/
 
 ## 🚀 Quick Start
 
-### 1. Data Preparation
+**Training Pipeline:**
+1. **Data Preparation** → `01_Dataset-Prepration.ipynb`
+2. **Train Tokenizer** → `02_Training-Tokenizer.ipynb` (BPE, 32K vocab)
+3. **Tokenize Dataset** → `03_Tokenizing-Dataset.ipynb`
+4. **Pre-train Model** → `PreTraining.ipynb`
+5. **Run Inference** → `Inference/Inference.ipynb`
 
-Prepare your dataset using the provided notebook:
+**Using the Model:**
 
-```bash
-jupyter notebook PreTraining/Implementation/01_Dataset-Prepration.ipynb
-```
+```python
+import torch
+from ModelArchitecture import Transformer, ModelConfig, generate
+from tokenizers import Tokenizer
 
-### 2. Train Custom Tokenizer
+# Load model
+config = ModelConfig(vocab_size=32000, hidden_size=768, n_heads=12, 
+                     n_kv_heads=4, n_layers=12, max_position_embeddings=2048)
+model = Transformer(config)
+model.load_state_dict(torch.load('Models/LumenBase.safetensors'))
+model.eval()
 
-Train a BPE tokenizer on your dataset:
+# Generate text
+tokenizer = Tokenizer.from_file('LumenTokenizer.json')
+prompt = "Once upon a time"
+input_ids = torch.tensor([tokenizer.encode(prompt).ids])
 
-```bash
-jupyter notebook PreTraining/Implementation/02_Training-Tokenizer.ipynb
-```
-
-### 3. Tokenize Dataset
-
-Convert text data to token IDs:
-
-```bash
-jupyter notebook PreTraining/Implementation/03_Tokenizing-Dataset.ipynb
-```
-
-### 4. Pre-train Model
-
-Launch the training process:
-
-```bash
-jupyter notebook PreTraining/Implementation/PreTraining.ipynb
-```
-
-### 5. Run Inference
-
-Generate text with your trained model:
-
-```bash
-jupyter notebook PreTraining/Inference/Inference.ipynb
+output = generate(model, input_ids, max_new_tokens=100, 
+                 temperature=0.8, top_k=50, top_p=0.9)
+print(tokenizer.decode(output[0].tolist()))
 ```
 
 ## 📊 Model Configuration
 
 ```python
-ModelConfig(
-    vocab_size=32000,
-    hidden_size=768,
-    n_heads=12,
-    n_kv_heads=4,           # Grouped Query Attention
-    n_kv_groups=3,
-    head_dim=64,
-    n_layers=12,
-    intermediate_size=3072,
-    max_position_embeddings=2048,
-    dropout=0.1,
-    tie_weights=True
-)
+vocab_size: 32000          # BPE tokenizer vocabulary
+hidden_size: 768           # Model dimension
+n_heads: 12                # Query heads
+n_kv_heads: 4              # Key-Value heads (GQA)
+n_layers: 12               # Transformer layers
+intermediate_size: 3072    # FFN dimension
+max_position_embeddings: 2048
 ```
 
-## 🎛️ Training Configuration
+## 🎛️ Training Setup
 
 - **Optimizer**: AdamW (lr=3e-4, weight_decay=0.1)
+- **Batch**: 12 × 4 accumulation = 48 effective
+- **Precision**: Mixed (BF16/FP16/FP32)
 - **Scheduler**: Linear warmup + Cosine annealing
-- **Batch Size**: 12 with 4 gradient accumulation steps
-- **Sequence Length**: 2048 tokens
-- **Mixed Precision**: Automatic (BF16/FP16/FP32)
-
-### Training Progress
 
 ![Training Loss Curve](PreTraining/images/training_loss_curve.png)
 
-*Training vs Validation Loss over time*
+## 📈 Evaluation
 
-## 📈 Benchmarks
+**Benchmarks:** ARC-Easy, ARC-Challenge, HellaSwag
 
-Evaluate your model on standard benchmarks:
+| Benchmark | Accuracy | Correct/Total |
+|-----------|----------|---------------|
+| ARC-Easy | 39.48% | 938/2,376 |
+| ARC-Challenge | 23.55% | 276/1,172 |
+| HellaSwag | 32.62% | 334/1,024 |
 
-```bash
-jupyter notebook PreTraining/Benchmark/Benchmark.ipynb
-```
-
-Supported benchmarks:
-- ARC-Easy & ARC-Challenge
-- HellaSwag
-
-## 🚧 Post-Training
-
-**Coming Soon**: Fine-tuning capabilities for instruction following, chat models, and task-specific adaptations.
+Run evaluation: `PreTraining/Benchmark/Benchmark.ipynb`
 
 ## 🔧 Requirements
 
@@ -133,32 +109,17 @@ Supported benchmarks:
 pip install torch numpy tqdm tokenizers datasets huggingface_hub matplotlib
 ```
 
-## 📝 Model Checkpoints
+## 🎨 Sampling Strategies
 
-The training pipeline automatically saves:
-- Regular checkpoints every N steps
-- Best model based on validation loss
-- Training history and loss curves
-
-Checkpoints are saved in: `PreTraining/Implementation/checkpoints/`
-
-## 🎨 Text Generation
-
-The model supports various sampling strategies:
-
-- **Greedy decoding** (temperature=0)
-- **Top-k sampling**
-- **Nucleus (top-p) sampling**
-- **Temperature scaling**
-
-## 🤝 Contributing
-
-Feel free to open issues or submit pull requests for improvements.
+- **Greedy**: temperature=0
+- **Top-k**: Sample from k most likely tokens
+- **Top-p (Nucleus)**: Sample from cumulative probability p
+- **Temperature**: Control randomness (lower = deterministic)
 
 ## 📄 License
 
-This project is open source and licensed under the MIT License. See the LICENSE file for details.
+MIT License - See LICENSE file for details.
 
 ---
 
-**Note**: This is a research/educational implementation. For production use, consider established frameworks like Hugging Face Transformers.
+**Note**: Educational/research implementation. For production, use established frameworks like Hugging Face Transformers.
