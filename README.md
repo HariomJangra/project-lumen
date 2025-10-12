@@ -5,6 +5,9 @@ A 128M Parameter Language Model Built from Scratch
 Project Lumen is a foundational language model created entirely from scratch for learning and research purposes.
 It explores every step of modern LLM development — from data preprocessing and tokenization to architecture design, training, evaluation and so on...
 
+[![Hugging Face](https://img.shields.io/badge/View_on-HuggingFace-blue?logo=huggingface)](https://huggingface.co/HariomJangra/LumenBase)
+
+
 ## 🎯 Overview
 
 This project implements a GPT-style transformer model from scratch using PyTorch, featuring grouped multi-query attention (GQA), SwiGLU activation, and RMSNorm. The **128M parameter** model is trained on custom datasets and evaluated on standard NLP benchmarks.
