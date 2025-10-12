@@ -5,12 +5,29 @@ A 128M Parameter Language Model Built from Scratch
 Project Lumen is a foundational language model created entirely from scratch for learning and research purposes.
 It explores every step of modern LLM development — from data preprocessing and tokenization to architecture design, training, evaluation and so on...
 
+[Try the model live on Hugging Face Spaces:]()
 [![Hugging Face](https://img.shields.io/badge/View_on-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
 
 
 ## 🎯 Overview
 
 This project implements a GPT-style transformer model from scratch using PyTorch, featuring grouped multi-query attention (GQA), SwiGLU activation, and RMSNorm. The **128M parameter** model is trained on custom datasets and evaluated on standard NLP benchmarks.
+
+## 📈 Benchmarks
+
+Benchmarks: ARC-Easy, ARC-Challenge, HellaSwag
+
+| Benchmark | Accuracy | Correct/Total |
+|-----------|----------|---------------|
+| ARC-Easy | 39.48% | 938/2,376 |
+| ARC-Challenge | 23.55% | 276/1,172 |
+| HellaSwag | 32.62% | 334/1,024 |
+
+Run detailed evaluation in: `PreTraining/Benchmark/Benchmark.ipynb`
+
+## 📉 Training Loss
+
+![Training Loss Curve](PreTraining/images/training_loss_curve.png)
 
 ## 📁 Project Structure
 
@@ -92,19 +109,8 @@ max_position_embeddings: 2048
 - **Precision**: Mixed (BF16/FP16/FP32)
 - **Scheduler**: Linear warmup + Cosine annealing
 
-![Training Loss Curve](PreTraining/images/training_loss_curve.png)
 
-## 📈 Evaluation
-
-**Benchmarks:** ARC-Easy, ARC-Challenge, HellaSwag
-
-| Benchmark | Accuracy | Correct/Total |
-|-----------|----------|---------------|
-| ARC-Easy | 39.48% | 938/2,376 |
-| ARC-Challenge | 23.55% | 276/1,172 |
-| HellaSwag | 32.62% | 334/1,024 |
-
-Run evaluation: `PreTraining/Benchmark/Benchmark.ipynb`
+ 
 
 ## 🔧 Requirements
 
