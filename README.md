@@ -5,8 +5,9 @@ A 128M Parameter Language Model Built from Scratch
 Project Lumen is a foundational language model created entirely from scratch for learning and research purposes.
 It explores every step of modern LLM development — from data preprocessing and tokenization to architecture design, training, evaluation and so on...
 
-[Try the model live on Hugging Face Spaces:]()
-[![Hugging Face](https://img.shields.io/badge/View_on-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
+> **Try the model live on Hugging Face Spaces**
+>
+> [![Hugging Face](https://img.shields.io/badge/View_on-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
 
 
 ## 🎯 Overview
