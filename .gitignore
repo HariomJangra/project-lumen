@@ -22,6 +22,7 @@ venv/
 *.pt
 *.pth
 *.bin
+*.safetensors
 
 # Logs
 *.log
@@ -31,8 +32,10 @@ Models/
 DataSets/
 PreTraining/Implementation/checkpoints/
 
+
 #benchmark outputs
 PreTraining/Benchmark/*results.json
+physicaliqa-train-dev/
 
 
 modelcard.md
