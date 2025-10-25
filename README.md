@@ -5,14 +5,31 @@ A 128M Parameter Language Model Built from Scratch
 Project Lumen is a foundational language model created entirely from scratch for learning and research purposes.
 It explores every step of modern LLM development — from data preprocessing and tokenization to architecture design, training, evaluation and so on...
 
-> **Try the model live on Hugging Face Spaces**
+> **🚀 Try Lumen Instruct - The User-Friendly Chat Model**
 >
-> [![Hugging Face](https://img.shields.io/badge/View_on-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
+> **⭐ Recommended**: [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?logo=vercel)](https://lumenchat.vercel.app/) | [![Hugging Face](https://img.shields.io/badge/Instruct_Model-HuggingFace-green?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/Lumen-Instruct)
+>
+> **Base Model**: [![Hugging Face](https://img.shields.io/badge/Base_Model-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
 
 
 ## 🎯 Overview
 
 This project implements a GPT-style transformer model from scratch using PyTorch, featuring grouped multi-query attention (GQA), SwiGLU activation, and RMSNorm. The **128M parameter** model is trained on custom datasets and evaluated on standard NLP benchmarks.
+
+## 🤖 Model Variants
+
+### Lumen Base
+The foundational pre-trained model trained on diverse text data, capable of general language understanding and generation. Primarily intended for research and development purposes.
+
+### ⭐ Lumen Instruct (Recommended for Users)
+A fine-tuned version of the base model optimized for following instructions and engaging in conversational AI tasks. This variant has been trained on instruction-following datasets to provide more helpful, accurate, and contextually appropriate responses.
+
+**Key Features of Lumen Instruct:**
+- 🎯 Enhanced instruction-following capabilities
+- 💬 Improved conversational AI performance
+- 🔍 Better handling of user queries and prompts
+- 🚀 Optimized for chat and assistant applications
+- ✨ **Ready-to-use for end users**
 
 ## 📈 Benchmarks
 
@@ -34,9 +51,14 @@ Run detailed evaluation in: `PreTraining/Benchmark/Benchmark.ipynb`
 
 ```
 PreTraining/
-├── Implementation/       # Model training and data preparation
+├── Implementation/       # Base model training and data preparation
 ├── Benchmark/           # Model evaluation on benchmarks
 ├── Inference/          # Text generation and inference
+
+PostTraining/
+├── Implementation/      # Supervised fine-tuning for Instruct model
+├── Datasets/           # Instruction-following datasets
+├── Inference/          # Instruct model inference
 ```
 
 ## ✨ Key Features
@@ -60,12 +82,24 @@ PreTraining/
 
 ## 🚀 Quick Start
 
-**Training Pipeline:**
-1. **Data Preparation** → `01_Dataset-Prepration.ipynb`
-2. **Train Tokenizer** → `02_Training-Tokenizer.ipynb` (BPE, 32K vocab)
-3. **Tokenize Dataset** → `03_Tokenizing-Dataset.ipynb`
-4. **Pre-train Model** → `PreTraining.ipynb`
-5. **Run Inference** → `Inference/Inference.ipynb`
+### ⭐ For End Users (Recommended)
+**Try Lumen Instruct directly:**
+- 🌐 **Live Demo**: [lumenchat.vercel.app](https://lumenchat.vercel.app/)
+- 🤗 **Hugging Face**: [VirtualInsight/Lumen-Instruct](https://huggingface.co/spaces/VirtualInsight/Lumen-Instruct)
+
+### For Developers & Researchers
+
+**Base Model Training Pipeline:**
+1. **Data Preparation** → `PreTraining/Implementation/01_Dataset-Prepration.ipynb`
+2. **Train Tokenizer** → `PreTraining/Implementation/02_Training-Tokenizer.ipynb` (BPE, 32K vocab)
+3. **Tokenize Dataset** → `PreTraining/Implementation/03_Tokenizing-Dataset.ipynb`
+4. **Pre-train Model** → `PreTraining/Implementation/PreTraining.ipynb`
+5. **Run Inference** → `PreTraining/Inference/Inference.ipynb`
+
+**Instruct Model Fine-tuning Pipeline:**
+1. **Prepare Instruction Datasets** → `PostTraining/Implementation/Dataset-Prepration.ipynb`
+2. **Supervised Fine-tuning** → `PostTraining/Implementation/SupervisedFineTuning.ipynb`
+3. **Instruct Model Inference** → `PostTraining/Inference/Inference.ipynb`
 
 **Using the Model:**
 
