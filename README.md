@@ -5,9 +5,8 @@ A 128M Parameter Language Model Built from Scratch
 Project Lumen is a foundational language model created entirely from scratch for learning and research purposes.
 It explores every step of modern LLM development — from data preprocessing and tokenization to architecture design, training, evaluation and so on...
 
-> **🚀 Try Lumen Instruct - The User-Friendly Chat Model**
->
-> **⭐ Recommended**: [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?logo=vercel)](https://lumenchat.vercel.app/) | [![Hugging Face](https://img.shields.io/badge/Instruct_Model-HuggingFace-green?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/Lumen-Instruct)
+
+> **Instruct Model**: [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?logo=vercel)](https://lumenchat.vercel.app/) | [![Hugging Face](https://img.shields.io/badge/Instruct_Model-HuggingFace-green?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/Lumen-Instruct)
 >
 > **Base Model**: [![Hugging Face](https://img.shields.io/badge/Base_Model-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
 
@@ -21,17 +20,11 @@ This project implements a GPT-style transformer model from scratch using PyTorch
 ### Lumen Base
 The foundational pre-trained model trained on diverse text data, capable of general language understanding and generation. Primarily intended for research and development purposes.
 
-### ⭐ Lumen Instruct (Recommended for Users)
+### ⭐ Lumen Instruct
 A fine-tuned version of the base model optimized for following instructions and engaging in conversational AI tasks. This variant has been trained on instruction-following datasets to provide more helpful, accurate, and contextually appropriate responses.
 
-**Key Features of Lumen Instruct:**
-- 🎯 Enhanced instruction-following capabilities
-- 💬 Improved conversational AI performance
-- 🔍 Better handling of user queries and prompts
-- 🚀 Optimized for chat and assistant applications
-- ✨ **Ready-to-use for end users**
 
-## 📈 Benchmarks
+## 📈 Benchmarks (Base Model)
 
 Benchmarks: ARC-Easy, ARC-Challenge, HellaSwag
 
@@ -101,29 +94,10 @@ PostTraining/
 2. **Supervised Fine-tuning** → `PostTraining/Implementation/SupervisedFineTuning.ipynb`
 3. **Instruct Model Inference** → `PostTraining/Inference/Inference.ipynb`
 
-**Using the Model:**
+**Using the Models:**
 
-```python
-import torch
-from ModelArchitecture import Transformer, ModelConfig, generate
-from tokenizers import Tokenizer
-
-# Load model
-config = ModelConfig(vocab_size=32000, hidden_size=768, n_heads=12, 
-                     n_kv_heads=4, n_layers=12, max_position_embeddings=2048)
-model = Transformer(config)
-model.load_state_dict(torch.load('Models/LumenBase.safetensors'))
-model.eval()
-
-# Generate text
-tokenizer = Tokenizer.from_file('LumenTokenizer.json')
-prompt = "Once upon a time"
-input_ids = torch.tensor([tokenizer.encode(prompt).ids])
-
-output = generate(model, input_ids, max_new_tokens=100, 
-                 temperature=0.8, top_k=50, top_p=0.9)
-print(tokenizer.decode(output[0].tolist()))
-```
+- **Base Model**: See `PreTraining/Inference/Inference.ipynb` for complete usage examples
+- **Instruct Model**: See `PostTraining/Inference/Inference.ipynb` for complete usage examples
 
 ## 📊 Model Configuration
 
