@@ -7,7 +7,7 @@ It explores every step of modern LLM development — from data preprocessing and
 
 ## Live PlayGround
 
-> **Instruct Model**: [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?logo=vercel)](https://lumenchat.vercel.app/) | [![Hugging Face](https://img.shields.io/badge/Instruct_Model-HuggingFace-green?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/Lumen-Instruct)
+> **Instruct Model**: [![Live Demo](https://img.shields.io/badge/Live_Demo-Vercel-black?logo=vercel)](https://lumenchat.vercel.app/)   [![Hugging Face](https://img.shields.io/badge/Instruct_Model-HuggingFace-green?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/Lumen-Instruct)
 >
 > **Base Model**: [![Hugging Face](https://img.shields.io/badge/Base_Model-HuggingFace-blue?logo=huggingface)](https://huggingface.co/spaces/VirtualInsight/LumenBase)
 
